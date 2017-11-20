@@ -4,16 +4,19 @@ import java.io.IOException;
 
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
+import org.apache.poi.xslf.usermodel.XSLFSlideLayout;
+import org.apache.poi.xslf.usermodel.XSLFSlideMaster;
 
 
 public class MergeFiles {
 	
 	public static void main(String args[]) throws IOException {
-		XMLSlideShow ppt = new XMLSlideShow();
+	    
+	    XMLSlideShow ppt = new XMLSlideShow();
 	
 		//taking the two presentations that are to be merged 
-	      String file1 = "file1.pptx";
-	      String file2 = "file2.pptx";
+	      String file1 = "082144-171012_Final_27Oct17.pptx";
+	      String file2 = "082144-171012_Final_27Oct17.pptx";
 	      String[] inputs = {file1, file2};
 	      
 	      for(String arg : inputs){
@@ -34,6 +37,7 @@ public class MergeFiles {
 	      FileOutputStream out = new FileOutputStream(file3);
 	      
 	      // saving the changes to a file
+	      ppt.findLayout(file3);
 	      ppt.write(out);
 	      System.out.println("Merging done successfully");
 	      out.close();
